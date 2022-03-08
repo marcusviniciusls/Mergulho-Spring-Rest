@@ -1,0 +1,26 @@
+-- Clientes
+Insert into Client  (uuid, date_creation, status, name, email, telephone) values ('bae68253-3f14-485b-b7a2-072bf0225b13',parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Marcus Vinicius','marcus.silva.dev@gmail.com','11993527709');
+Insert into Client  (uuid, date_creation, status, name, email, telephone) values ('bae68253-3f14-485b-b7a2-072bf0225b11',parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Ana','Ana@gmail.com','119382718273');
+Insert into Client  (uuid, date_creation, status, name, email, telephone) values ('bae68253-3f14-485b-b7a2-072bf0225b12',parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Vitoria','Vitoria@gmail.com','11983746352');
+Insert into Client  (uuid, date_creation, status, name, email, telephone) values ('bae68253-3f14-485b-b7a2-072bf0225b10',parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Alex','Alex@gmail.com','11918273645');
+Insert into Client  (uuid, date_creation, status, name, email, telephone) values ('bae68253-3f14-485b-b7a2-072bf0225b14',parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Gomes','Gomes@gmail.com','11947362716');
+Insert into Client  (uuid, date_creation, status, name, email, telephone) values ('bae68253-3f14-485b-b7a2-072bf0225b15',parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Roberto','Roberto@gmail.com','11987463716');
+Insert into Client  (uuid, date_creation, status, name, email, telephone) values ('bae68253-3f14-485b-b7a2-072bf0225b16',parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Angelica','Angelica@gmail.com','11984738493');
+Insert into Client  (uuid, date_creation, status, name, email, telephone) values ('bae68253-3f14-485b-b7a2-072bf0225b17',parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Gustavo','Gustavo@gmail.com','11998473627');
+Insert into Client  (uuid, date_creation, status, name, email, telephone) values ('bae68253-3f14-485b-b7a2-072bf0225b18',parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Davi','Davi@gmail.com','1198473627');
+Insert into Client  (uuid, date_creation, status, name, email, telephone) values ('bae68253-3f14-485b-b7a2-072bf0225b19',parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Rodolfo','Rodolfo@gmail.com','11984736271');
+
+-- Destino
+Insert into Destiny (uuid, date_creation, status, name, address, number, district) values ('bae68253-3f14-485b-b7a2-072bf0225b19',parsedatetime('2022-02-04 15:28:65','yyyy-MM-dd hh:mm:ss'), true, 'Joaquim','Rua Caetano Basso','252','Parque das Oliveiras');
+Insert into Destiny (uuid, date_creation, status, name, address, number, district) values ('bae68253-3f14-485b-b7a2-072bf0225b20',parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Emily','Rua Piquinhu','100','Parque das Oliveiras');
+Insert into Destiny (uuid, date_creation, status, name, address, number, district) values ('bae68253-3f14-485b-b7a2-072bf0225b21',parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Arnaldo','Rua das Oliveiras','52','Parque das Oliveiras');
+
+-- Entregas
+Insert into Delivery (uuid, date_creation, status, date_order, date_end, delivery_status, taxa, client_id, destiny_id) values ('bae68253-3f14-485b-b7a2-072bf0225b99', parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, parsedatetime('2022-03-01 15:28:19','yyyy-MM-dd hh:mm:ss'), parsedatetime('2022-03-07 15:28:19','yyyy-MM-dd hh:mm:ss'), 1, '300.00', 'bae68253-3f14-485b-b7a2-072bf0225b13', 'bae68253-3f14-485b-b7a2-072bf0225b21');
+Insert into Delivery (uuid, date_creation, status, date_order, delivery_status, taxa, client_id, destiny_id) values ('bae68253-3f14-485b-b7a2-072bf0225b98', parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, parsedatetime('2022-03-07 15:28:19','yyyy-MM-dd hh:mm:ss'), 0, '600.00', 'bae68253-3f14-485b-b7a2-072bf0225b14', 'bae68253-3f14-485b-b7a2-072bf0225b20');
+Insert into Delivery (uuid, date_creation, status, delivery_status, taxa, client_id, destiny_id) values ('bae68253-3f14-485b-b7a2-072bf0225b97', parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 2, '100.00', 'bae68253-3f14-485b-b7a2-072bf0225b14', 'bae68253-3f14-485b-b7a2-072bf0225b20');
+
+-- Ocorrencias
+Insert into Occurrence (uuid, date_creation, status, description, registration_date, delivery_id) values ('bae68253-3f14-485b-b7a2-072bf0225b80', parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Em Preparação', parsedatetime('2022-03-01 15:28:19','yyyy-MM-dd hh:mm:ss'), 'bae68253-3f14-485b-b7a2-072bf0225b99');
+Insert into Occurrence (uuid, date_creation, status, description, registration_date, delivery_id) values ('bae68253-3f14-485b-b7a2-072bf0225b81', parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Aprovado', parsedatetime('2022-03-01 16:28:19','yyyy-MM-dd hh:mm:ss'), 'bae68253-3f14-485b-b7a2-072bf0225b99');
+Insert into Occurrence (uuid, date_creation, status, description, registration_date, delivery_id) values ('bae68253-3f14-485b-b7a2-072bf0225b82', parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Finalizado', parsedatetime('2022-03-07 15:28:19','yyyy-MM-dd hh:mm:ss'), 'bae68253-3f14-485b-b7a2-072bf0225b99');
