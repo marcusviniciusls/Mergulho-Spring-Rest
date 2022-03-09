@@ -1,15 +1,13 @@
 package com.algaworks.deliveredapi.controller;
 
 import com.algaworks.deliveredapi.service.ClientService;
+import com.algaworks.deliveredapi.service.request.ClientFormUpdate;
 import com.algaworks.deliveredapi.service.response.ClientDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.UUID;
 
@@ -30,5 +28,11 @@ public class ClientController {
     public ResponseEntity<Page<ClientDto>> findAll(Pageable pageable){
         Page<ClientDto> pageClientDto = clientService.findAll(pageable);
         return ResponseEntity.ok().body(pageClientDto);
+    }
+
+    @PutMapping(value = "/{id}")
+    public ResponseEntity<ClientDto> updateClient(@PathVariable UUID id, @RequestBody ClientFormUpdate clientFormUpdate){
+        ClientDto clientDto = clientService.updateClient(id, clientFormUpdate);
+        return ResponseEntity.noContent().build();
     }
 }
