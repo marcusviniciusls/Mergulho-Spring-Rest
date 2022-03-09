@@ -23,8 +23,16 @@ public class ResourceExceptionHandler {
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<StandardError> errorBeanValidation(MethodArgumentNotValidException methodArgumentNotValidException, HttpServletRequest httpServletRequest) {
         String error = "BEAN VALIDATION";
-        HttpStatus httpStatus = HttpStatus.NOT_FOUND;
+        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
         StandardError erro = new StandardError(Instant.now(), httpStatus.value(), error, methodArgumentNotValidException.getMessage(), httpServletRequest.getRequestURI());
+        return ResponseEntity.status(httpStatus).body(erro);
+    }
+
+    @ExceptionHandler(AlredyEmailExist.class)
+    public ResponseEntity<StandardError> errorEmailAlredyExist(AlredyEmailExist alredyEmailExist, HttpServletRequest httpServletRequest) {
+        String error = "E-MAIL ALREDY EXIST";
+        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+        StandardError erro = new StandardError(Instant.now(), httpStatus.value(), error, alredyEmailExist.getMessage(), httpServletRequest.getRequestURI());
         return ResponseEntity.status(httpStatus).body(erro);
     }
 }

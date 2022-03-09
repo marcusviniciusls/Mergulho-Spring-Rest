@@ -1,5 +1,6 @@
 package com.algaworks.deliveredapi.service;
 
+import com.algaworks.deliveredapi.exception.AlredyEmailExist;
 import com.algaworks.deliveredapi.exception.ResourceNotFoundException;
 import com.algaworks.deliveredapi.model.Client;
 import com.algaworks.deliveredapi.service.factory.ClientBusinessRule;
@@ -73,7 +74,15 @@ public class ClientService {
     }
 
     public void saveClient(ClientFormSave clientFormSave){
+        findByClientEmail(clientFormSave.getEmail());
         Client client = clientBusinessRule.convertClientFromSaveInClient(clientFormSave);
         clientRepository.save(client);
+    }
+
+    private void findByClientEmail(String email){
+        Optional<Client> optionalClient = clientRepository.findByByEmailNotExcluded(email);
+        if (optionalClient.isPresent()){
+            throw new AlredyEmailExist("E-MAIL ALREDY EXIST");
+        }
     }
 }
