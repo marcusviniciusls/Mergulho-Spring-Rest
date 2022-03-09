@@ -7,6 +7,7 @@ import com.algaworks.deliveredapi.service.request.ClientFormUpdate;
 import com.algaworks.deliveredapi.service.response.ClientDto;
 import com.algaworks.deliveredapi.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
@@ -53,5 +54,20 @@ public class ClientService {
         client = clientRepository.save(client);
         ClientDto clientDto = clientBusinessRule.convertClientInClientDto(client);
         return clientDto;
+    }
+
+    public void deleteClient(UUID uuid){
+        try{
+            clientRepository.deleteById(uuid);
+        } catch(DataIntegrityViolationException dataIntegrityViolationException){
+            Client client = clientRepository.findById(uuid).get();
+            client = markedDeleteClient(client);
+            clientRepository.save(client);
+        }
+    }
+
+    private Client markedDeleteClient(Client client){
+        client.setStatus(false);
+        return client;
     }
 }
