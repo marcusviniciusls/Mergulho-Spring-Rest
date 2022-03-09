@@ -5,8 +5,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-import javax.validation.constraints.NotEmpty;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -14,12 +15,17 @@ import javax.validation.constraints.NotNull;
 @Setter
 public class ClientFormSave {
 
-    @NotNull
-    @NotEmpty
+
+    @NotBlank
+    @Size(max = 60)
     private String name;
-    @NotNull
-    @NotEmpty
+
+    @NotBlank
+    @Email
+    @Size(max = 255)
     private String email;
-    @com.sun.istack.NotNull
+
+    @NotBlank
+    @Size(max = 100)
     private String telephone;
 }

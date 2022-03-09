@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.UUID;
 
 @RestController
@@ -33,7 +34,7 @@ public class ClientController {
     }
 
     @PutMapping(value = "/{id}")
-    public ResponseEntity<ClientDto> updateClient(@PathVariable UUID id, @RequestBody ClientFormUpdate clientFormUpdate){
+    public ResponseEntity<ClientDto> updateClient(@PathVariable UUID id, @Valid @RequestBody ClientFormUpdate clientFormUpdate){
         ClientDto clientDto = clientService.updateClient(id, clientFormUpdate);
         return ResponseEntity.noContent().build();
     }
@@ -45,7 +46,7 @@ public class ClientController {
     }
 
     @PostMapping
-    public ResponseEntity<ClientDto> saveClient(@RequestBody ClientFormSave clientFormSave){
+    public ResponseEntity<ClientDto> saveClient(@Valid @RequestBody ClientFormSave clientFormSave){
         clientService.saveClient(clientFormSave);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
