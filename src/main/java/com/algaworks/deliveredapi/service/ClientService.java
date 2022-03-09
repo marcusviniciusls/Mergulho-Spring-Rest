@@ -3,6 +3,7 @@ package com.algaworks.deliveredapi.service;
 import com.algaworks.deliveredapi.exception.ResourceNotFoundException;
 import com.algaworks.deliveredapi.model.Client;
 import com.algaworks.deliveredapi.service.factory.ClientBusinessRule;
+import com.algaworks.deliveredapi.service.request.ClientFormSave;
 import com.algaworks.deliveredapi.service.request.ClientFormUpdate;
 import com.algaworks.deliveredapi.service.response.ClientDto;
 import com.algaworks.deliveredapi.repository.ClientRepository;
@@ -69,5 +70,10 @@ public class ClientService {
     private Client markedDeleteClient(Client client){
         client.setStatus(false);
         return client;
+    }
+
+    public void saveClient(ClientFormSave clientFormSave){
+        Client client = clientBusinessRule.convertClientFromSaveInClient(clientFormSave);
+        clientRepository.save(client);
     }
 }

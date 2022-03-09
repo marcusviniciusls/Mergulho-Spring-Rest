@@ -1,6 +1,7 @@
 package com.algaworks.deliveredapi.service.factory;
 
 import com.algaworks.deliveredapi.model.Client;
+import com.algaworks.deliveredapi.service.request.ClientFormSave;
 import com.algaworks.deliveredapi.service.request.ClientFormUpdate;
 import com.algaworks.deliveredapi.service.response.ClientDto;
 import org.modelmapper.ModelMapper;
@@ -26,6 +27,11 @@ public class ClientBusinessRule {
         if (clientFormUpdate.getTelephone() != null){
             client.setTelephone(clientFormUpdate.getTelephone());
         }
+        return client;
+    }
+
+    public Client convertClientFromSaveInClient(ClientFormSave clientFormSave){
+        Client client = modelMapper.map(clientFormSave, Client.class);
         return client;
     }
 }
