@@ -28,4 +28,8 @@ public class SuperEntity {
         dateCreation = now;
         status = true;
     }
+
+    public boolean isStatus() {
+        return status;
+    }
 }
