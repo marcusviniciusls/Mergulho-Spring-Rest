@@ -9,10 +9,12 @@ import com.algaworks.deliveredapi.service.request.destiny.DestinyFormUpdate;
 import com.algaworks.deliveredapi.service.response.DestinyDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -49,18 +51,21 @@ public class DestinyService {
         verifyCheckedDestiny(optionalDestiny);
         Destiny destiny = optionalDestiny.get();
         destiny = destinyBusinessRule.updateDestiny(destiny, destinyFormUpdate);
+        destiny.setDateUpdate(LocalDateTime.now());
         destiny = destinyRepository.save(destiny);
         DestinyDto destinyDto = destinyBusinessRule.convertDestinyInDestinyDto(destiny);
         return destinyDto;
     }
 
-    public void deleteClient(UUID uuid){
+    public void deleteDestiny(UUID uuid){
         try{
             destinyRepository.deleteById(uuid);
         } catch(DataIntegrityViolationException dataIntegrityViolationException){
             Destiny destiny = destinyRepository.findById(uuid).get();
             destiny = markedDeleteDestiny(destiny);
             destinyRepository.save(destiny);
+        } catch (EmptyResultDataAccessException emptyResultDataAccessException){
+            throw new ResourceNotFoundException("ID NOT FOUND EXCEPTION");
         }
     }
 
@@ -69,7 +74,7 @@ public class DestinyService {
         return destiny;
     }
 
-    public void saveClient(DestinyFormSave destinyFormSave){
+    public void saveDestiny(DestinyFormSave destinyFormSave){
         Destiny destiny = destinyBusinessRule.convertDestinyFormSaveInDestiny(destinyFormSave);
         destinyRepository.save(destiny);
     }
