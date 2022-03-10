@@ -35,4 +35,12 @@ public class ResourceExceptionHandler {
         StandardError erro = new StandardError(Instant.now(), httpStatus.value(), error, alredyEmailExist.getMessage(), httpServletRequest.getRequestURI());
         return ResponseEntity.status(httpStatus).body(erro);
     }
+
+    @ExceptionHandler(StateDeliveyException.class)
+    public ResponseEntity<StandardError> errorStateDelivery(StateDeliveyException stateDeliveyException, HttpServletRequest httpServletRequest) {
+        String error = "State Incorret";
+        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+        StandardError erro = new StandardError(Instant.now(), httpStatus.value(), error, stateDeliveyException.getMessage(), httpServletRequest.getRequestURI());
+        return ResponseEntity.status(httpStatus).body(erro);
+    }
 }
