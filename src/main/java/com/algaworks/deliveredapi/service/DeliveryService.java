@@ -55,12 +55,25 @@ public class DeliveryService {
         Optional<Delivery> optionalDelivery = deliveryRepository.findById(uuid);
         checkDelivery(optionalDelivery);
         Delivery delivery = optionalDelivery.get();
-        checkStatusForFinish(optionalDelivery);
-        checkStatusForCancel(optionalDelivery);
+        checkStatusForFinishOrCancel(optionalDelivery);
         delivery.setDeliveryStatus(DeliveryStatus.FINISH);
         delivery.setDateEnd(LocalDateTime.now());
+        delivery.setDateUpdate(LocalDateTime.now());
         deliveryRepository.save(delivery);
-        occurrenceService.saveOccurrence("Delivery Finish", delivery);
+        occurrenceService.saveOccurrence("Delivery Finish ", delivery);
+    }
+
+    @Transactional
+    public void cancelDelivery(UUID uuid){
+        Optional<Delivery> optionalDelivery = deliveryRepository.findById(uuid);
+        checkDelivery(optionalDelivery);
+        checkStatusForFinishOrCancel(optionalDelivery);
+        Delivery delivery = optionalDelivery.get();
+        delivery.setDeliveryStatus(DeliveryStatus.CANCEL);
+        delivery.setDateEnd(LocalDateTime.now());
+        delivery.setDateUpdate(LocalDateTime.now());
+        deliveryRepository.save(delivery);
+        occurrenceService.saveOccurrence("Delivery Cancel ", delivery);
     }
 
     private void checkDelivery(Optional<Delivery> optionalDelivery){
@@ -69,15 +82,9 @@ public class DeliveryService {
         }
     }
 
-    private void checkStatusForFinish(Optional<Delivery> optionalDelivery){
-        if (optionalDelivery.get().getDeliveryStatus().equals(DeliveryStatus.FINISH)){
+    private void checkStatusForFinishOrCancel(Optional<Delivery> optionalDelivery){
+        if (optionalDelivery.get().getDeliveryStatus().equals(DeliveryStatus.FINISH) || optionalDelivery.get().getDeliveryStatus().equals(DeliveryStatus.CANCEL)){
             throw new StateDeliveyException("Unable to change status to finish");
-        }
-    }
-
-    private void checkStatusForCancel(Optional<Delivery> optionalDelivery){
-        if (optionalDelivery.get().getDeliveryStatus().equals(DeliveryStatus.CANCEL)){
-            throw new StateDeliveyException("Unable to change status to cancel");
         }
     }
 }

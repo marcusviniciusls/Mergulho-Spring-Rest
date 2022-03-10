@@ -22,9 +22,15 @@ public class DeliveryController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @PutMapping(value = "/{id}")
+    @PutMapping(value = "/finish/{id}")
     public ResponseEntity<?> finishDelivery(@PathVariable UUID id){
         deliveryService.finishDelivery(id);
+        return ResponseEntity.noContent().build();
+    }
+
+    @PutMapping(value = "/cancel/{id}")
+    public ResponseEntity<?> cancelDelivery(@PathVariable UUID id){
+        deliveryService.cancelDelivery(id);
         return ResponseEntity.noContent().build();
     }
 }
