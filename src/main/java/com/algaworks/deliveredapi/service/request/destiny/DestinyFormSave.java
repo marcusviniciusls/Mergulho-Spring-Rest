@@ -1,4 +1,4 @@
-package com.algaworks.deliveredapi.service.request;
+package com.algaworks.deliveredapi.service.request.destiny;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -13,19 +13,16 @@ import javax.validation.constraints.Size;
 @AllArgsConstructor
 @Getter
 @Setter
-public class ClientFormSave {
-
+public class DestinyFormSave {
 
     @NotBlank
-    @Size(max = 60)
     private String name;
-
     @NotBlank
-    @Email
-    @Size(max = 255)
-    private String email;
-
+    private String address;
     @NotBlank
-    @Size(max = 100)
-    private String telephone;
+    private String number;
+    private String complement;
+    @NotBlank
+    private String district;
+
 }

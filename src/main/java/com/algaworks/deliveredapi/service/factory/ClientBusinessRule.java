@@ -1,8 +1,8 @@
 package com.algaworks.deliveredapi.service.factory;
 
 import com.algaworks.deliveredapi.model.Client;
-import com.algaworks.deliveredapi.service.request.ClientFormSave;
-import com.algaworks.deliveredapi.service.request.ClientFormUpdate;
+import com.algaworks.deliveredapi.service.request.client.ClientFormSave;
+import com.algaworks.deliveredapi.service.request.client.ClientFormUpdate;
 import com.algaworks.deliveredapi.service.response.ClientDto;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;

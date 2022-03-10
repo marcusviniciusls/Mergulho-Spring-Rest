@@ -1,4 +1,4 @@
-package com.algaworks.deliveredapi.service.request;
+package com.algaworks.deliveredapi.service.request.client;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

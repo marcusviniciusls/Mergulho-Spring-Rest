@@ -1,8 +1,8 @@
 package com.algaworks.deliveredapi.controller;
 
 import com.algaworks.deliveredapi.service.ClientService;
-import com.algaworks.deliveredapi.service.request.ClientFormSave;
-import com.algaworks.deliveredapi.service.request.ClientFormUpdate;
+import com.algaworks.deliveredapi.service.request.client.ClientFormSave;
+import com.algaworks.deliveredapi.service.request.client.ClientFormUpdate;
 import com.algaworks.deliveredapi.service.response.ClientDto;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

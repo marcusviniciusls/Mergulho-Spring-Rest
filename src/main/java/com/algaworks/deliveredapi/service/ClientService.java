@@ -4,8 +4,8 @@ import com.algaworks.deliveredapi.exception.AlredyEmailExist;
 import com.algaworks.deliveredapi.exception.ResourceNotFoundException;
 import com.algaworks.deliveredapi.model.Client;
 import com.algaworks.deliveredapi.service.factory.ClientBusinessRule;
-import com.algaworks.deliveredapi.service.request.ClientFormSave;
-import com.algaworks.deliveredapi.service.request.ClientFormUpdate;
+import com.algaworks.deliveredapi.service.request.client.ClientFormSave;
+import com.algaworks.deliveredapi.service.request.client.ClientFormUpdate;
 import com.algaworks.deliveredapi.service.response.ClientDto;
 import com.algaworks.deliveredapi.repository.ClientRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +19,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class ClientService {
+public class
+ClientService {
 
     @Autowired
     private ClientRepository clientRepository;
