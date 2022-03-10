@@ -34,7 +34,7 @@ public class DestinyService {
         return destinyBusinessRule.convertDestinyInDestinyDto(destiny);
     }
 
-    private void verifyCheckedDestiny(Optional<Destiny> optionalDestiny){
+    public void verifyCheckedDestiny(Optional<Destiny> optionalDestiny){
         if (optionalDestiny.isEmpty() || optionalDestiny.get().isStatus() == false){
             throw new ResourceNotFoundException("RESOURCE NOT FOUND EXCEPTION");
         }

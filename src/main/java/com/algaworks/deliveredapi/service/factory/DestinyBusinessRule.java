@@ -33,6 +33,9 @@ public class DestinyBusinessRule {
         if (destinyFormUpdate.getNumber() != null){
             destiny.setNumber(destinyFormUpdate.getNumber());
         }
+        if (destinyFormUpdate.getCep() != null){
+            destiny.setCep(destinyFormUpdate.getCep());
+        }
         return destiny;
     }
 

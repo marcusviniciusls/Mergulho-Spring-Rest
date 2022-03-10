@@ -19,5 +19,6 @@ public class Destiny extends SuperEntity{
     private String address;
     private String number;
     private String complement;
+    private String cep;
     private String district;
 }

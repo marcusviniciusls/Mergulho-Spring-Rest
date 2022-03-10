@@ -24,4 +24,8 @@ public class Occurrence extends SuperEntity{
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public void setDelivery(Delivery delivery) {
+        this.delivery = delivery;
+    }
 }

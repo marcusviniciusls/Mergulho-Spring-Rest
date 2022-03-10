@@ -11,9 +11,9 @@ Insert into Client  (uuid, date_creation, status, name, email, telephone) values
 Insert into Client  (uuid, date_creation, status, name, email, telephone) values ('bae68253-3f14-485b-b7a2-072bf0225b19',parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Rodolfo','Rodolfo@gmail.com','11984736271');
 
 -- Destino
-Insert into Destiny (uuid, date_creation, status, name, address, number, district) values ('bae68253-3f14-485b-b7a2-072bf0225b19',parsedatetime('2022-02-04 15:28:65','yyyy-MM-dd hh:mm:ss'), true, 'Joaquim','Rua Caetano Basso','252','Parque das Oliveiras');
-Insert into Destiny (uuid, date_creation, status, name, address, number, district) values ('bae68253-3f14-485b-b7a2-072bf0225b20',parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Emily','Rua Piquinhu','100','Parque das Oliveiras');
-Insert into Destiny (uuid, date_creation, status, name, address, number, district) values ('bae68253-3f14-485b-b7a2-072bf0225b21',parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Arnaldo','Rua das Oliveiras','52','Parque das Oliveiras');
+Insert into Destiny (uuid, date_creation, status, name, address, number, district, cep) values ('bae68253-3f14-485b-b7a2-072bf0225b19',parsedatetime('2022-02-04 15:28:65','yyyy-MM-dd hh:mm:ss'), true, 'Joaquim','Rua Caetano Basso','252','Parque das Oliveiras','03584-130');
+Insert into Destiny (uuid, date_creation, status, name, address, number, district, cep) values ('bae68253-3f14-485b-b7a2-072bf0225b20',parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Emily','Rua Piquinhu','100','Parque das Oliveiras','03657-010');
+Insert into Destiny (uuid, date_creation, status, name, address, number, district, cep) values ('bae68253-3f14-485b-b7a2-072bf0225b21',parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, 'Arnaldo','Rua das Oliveiras','52','Parque das Oliveiras','03987-100');
 
 -- Entregas
 Insert into Delivery (uuid, date_creation, status, date_order, date_end, delivery_status, taxa, client_id, destiny_id) values ('bae68253-3f14-485b-b7a2-072bf0225b99', parsedatetime('2022-02-04 15:28:19','yyyy-MM-dd hh:mm:ss'), true, parsedatetime('2022-03-01 15:28:19','yyyy-MM-dd hh:mm:ss'), parsedatetime('2022-03-07 15:28:19','yyyy-MM-dd hh:mm:ss'), 1, '300.00', 'bae68253-3f14-485b-b7a2-072bf0225b13', 'bae68253-3f14-485b-b7a2-072bf0225b21');

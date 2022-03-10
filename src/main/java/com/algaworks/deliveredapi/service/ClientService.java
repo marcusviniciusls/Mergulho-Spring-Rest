@@ -89,4 +89,10 @@ ClientService {
             throw new AlredyEmailExist("E-MAIL ALREDY EXIST");
         }
     }
+
+    public Client findClientByEmail(String email){
+        Optional<Client> optionalClient = clientRepository.findByByEmailNotExcluded(email);
+        verifyCheckedClient(optionalClient);
+        return optionalClient.get();
+    }
 }

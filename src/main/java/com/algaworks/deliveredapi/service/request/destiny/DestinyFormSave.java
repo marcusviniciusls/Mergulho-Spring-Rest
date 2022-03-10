@@ -23,6 +23,8 @@ public class DestinyFormSave {
     private String number;
     private String complement;
     @NotBlank
+    private String cep;
+    @NotBlank
     private String district;
 
 }
