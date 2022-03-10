@@ -1,6 +1,7 @@
 package com.algaworks.deliveredapi.repository;
 
 import com.algaworks.deliveredapi.model.Delivery;
+import com.algaworks.deliveredapi.model.Destiny;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -15,4 +16,7 @@ public interface DeliveryRepository extends JpaRepository<Delivery, UUID> {
 
     @Query("SELECT d FROM Delivery d WHERE d.status = true AND d.client.email = :email")
     Page<Delivery> findAllByClientEmail(Pageable pageable, @Param("email") String email);
+
+    @Query("SELECT d FROM Delivery d WHERE d.status = true")
+    Page<Delivery> findByAllNotExcluded(Pageable pageable);
 }

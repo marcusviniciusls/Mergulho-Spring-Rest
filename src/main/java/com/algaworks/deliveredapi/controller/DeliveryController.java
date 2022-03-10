@@ -2,6 +2,7 @@ package com.algaworks.deliveredapi.controller;
 
 import com.algaworks.deliveredapi.service.AllDeliveryByClientService;
 import com.algaworks.deliveredapi.service.DeliveryService;
+import com.algaworks.deliveredapi.service.ListAllDelivery;
 import com.algaworks.deliveredapi.service.request.delivery.SaveDeliveryForm;
 import com.algaworks.deliveredapi.service.response.DeliveryDto;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +23,9 @@ public class DeliveryController {
 
     @Autowired
     private AllDeliveryByClientService allDeliveryByClientService;
+
+    @Autowired
+    private ListAllDelivery listAllDelivery;
 
     @PostMapping
     public ResponseEntity<?> saveDelivery(@RequestBody SaveDeliveryForm saveDeliveryForm){
@@ -44,6 +48,12 @@ public class DeliveryController {
     @GetMapping(value = "/{email}/client")
     public ResponseEntity<Page<DeliveryDto>> findByDeliveyByClient(Pageable pageable, @PathVariable String email){
         Page<DeliveryDto> pageDevliveryDto = allDeliveryByClientService.findByDeliveryByClient(pageable,email);
+        return ResponseEntity.ok().body(pageDevliveryDto);
+    }
+
+    @GetMapping(value = "/all")
+    public ResponseEntity<Page<DeliveryDto>> findByDelivey(Pageable pageable){
+        Page<DeliveryDto> pageDevliveryDto = listAllDelivery.findAllDelivery(pageable);
         return ResponseEntity.ok().body(pageDevliveryDto);
     }
 }
