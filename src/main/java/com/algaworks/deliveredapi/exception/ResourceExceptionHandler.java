@@ -28,8 +28,8 @@ public class ResourceExceptionHandler {
         return ResponseEntity.status(httpStatus).body(erro);
     }
 
-    @ExceptionHandler(AlredyEmailExist.class)
-    public ResponseEntity<StandardError> errorEmailAlredyExist(AlredyEmailExist alredyEmailExist, HttpServletRequest httpServletRequest) {
+    @ExceptionHandler(AlredyEmailExistException.class)
+    public ResponseEntity<StandardError> errorEmailAlredyExist(AlredyEmailExistException alredyEmailExist, HttpServletRequest httpServletRequest) {
         String error = "E-MAIL ALREDY EXIST";
         HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
         StandardError erro = new StandardError(Instant.now(), httpStatus.value(), error, alredyEmailExist.getMessage(), httpServletRequest.getRequestURI());
@@ -41,6 +41,14 @@ public class ResourceExceptionHandler {
         String error = "State Incorret";
         HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
         StandardError erro = new StandardError(Instant.now(), httpStatus.value(), error, stateDeliveyException.getMessage(), httpServletRequest.getRequestURI());
+        return ResponseEntity.status(httpStatus).body(erro);
+    }
+
+    @ExceptionHandler(AddressAlredyExistException.class)
+    public ResponseEntity<StandardError> addresAlredyExist(AddressAlredyExistException addressAlredyExist, HttpServletRequest httpServletRequest) {
+        String error = "Address Alredy Exist";
+        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
+        StandardError erro = new StandardError(Instant.now(), httpStatus.value(), error, addressAlredyExist.getMessage(), httpServletRequest.getRequestURI());
         return ResponseEntity.status(httpStatus).body(erro);
     }
 }

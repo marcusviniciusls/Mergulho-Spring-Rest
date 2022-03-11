@@ -1,5 +1,6 @@
 package com.algaworks.deliveredapi.service;
 
+import com.algaworks.deliveredapi.exception.AddressAlredyExistException;
 import com.algaworks.deliveredapi.exception.ResourceNotFoundException;
 import com.algaworks.deliveredapi.model.Destiny;
 import com.algaworks.deliveredapi.repository.DestinyRepository;
@@ -75,7 +76,15 @@ public class DestinyService {
     }
 
     public void saveDestiny(DestinyFormSave destinyFormSave){
+        checkAddressUnique(destinyFormSave.getCep(), destinyFormSave.getNumber());
         Destiny destiny = destinyBusinessRule.convertDestinyFormSaveInDestiny(destinyFormSave);
         destinyRepository.save(destiny);
+    }
+
+    private void checkAddressUnique(String cep, String number){
+        Optional<Destiny> optionalDestiny = destinyRepository.findByDestinyCepAndNumberUnico(cep, number);
+        if (optionalDestiny.isPresent()){
+            throw new AddressAlredyExistException("Address Alredy Exist");
+        }
     }
 }
